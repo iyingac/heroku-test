@@ -46,6 +46,8 @@ public class Main {
           //output.add( "Read from DB: " + rs.getTimestamp("tick"));
         	output.add( "Read from DB: " + rs.getString("name") + " , Annual Volume: " + rs.getString("annual_volume_pcs__c"));
 			
+          //output.add( "Read from DB: " + rs.getString("name") + " , Annual Volume: " + rs.getString("annual_volume_pcs__c"));
+        	output.add( "Read from DB: " + rs.getString("name") + " , Annual Volume: " + rs.getString("project_name__c") + " , Annual Volume: " + rs.getString("annual_volume_pcs__c"));
         }
 
         attributes.put("results", output);
