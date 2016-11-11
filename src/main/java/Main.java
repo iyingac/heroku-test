@@ -24,9 +24,9 @@ public class Main {
     
     get("/IdealPrice", (req, res) -> {
     	String npdName = req.params("npd");
-    	
-    	IdealPrice idealPrice1 = new IdealPrice();
-    	return idealPrice1.getAnnualVolume(npdName);
+    	return npdName;
+    	//IdealPrice idealPrice1 = new IdealPrice();
+    	//return idealPrice1.getAnnualVolume(npdName);
     	//return idealPrice1.getAnnualVolume("NPD-00500");
     	});
 
