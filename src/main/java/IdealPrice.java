@@ -17,11 +17,29 @@ import com.heroku.sdk.jdbc.DatabaseUrl;
 
 public class IdealPrice {
 	
-	public static void IdealPRice(String[] args) {
-		
-		port(Integer.valueOf(System.getenv("PORT")));
-	    staticFileLocation("/public");
-
-	    get("/IdealPrice", (req, res) -> "Ideal Price");
+	private Connection connection = null;
+	Map<String, npd> attributes = new HashMap<>();
+	public IdealPrice() {
+		try
+		{
+			connection = DatabaseUrl.extract().getConnection();
+			
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.NPD__c");
+			while (rs.next()) 
+			{
+				npd newNPD = new npd();
+				newNPD.npdName = rs.getString("name");
+				newNPD.ProjectName = rs.getString("project_name__c");
+				newNPD.AnnualVolume = Double.parseDouble(rs.getString("annual_volume_pcs__c"));
+				attributes.put(newNPD.npdName, newNPD);
+			}
+		}
+		catch (Exception e) { }
+	}
+	
+	public Double getAnnualVolume(String NPD)
+	{
+		return attributes.get(NPD).AnnualVolume;
 	}
 }

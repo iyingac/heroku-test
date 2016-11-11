@@ -21,6 +21,13 @@ public class Main {
     staticFileLocation("/public");
 
     get("/hello", (req, res) -> "Hello World");
+    
+    get("/IdealPrice", (req, res) -> {
+    	String npdName = req.params("npd");
+    	
+    	IdealPrice idealPrice1 = new IdealPrice();
+    	return idealPrice1.getAnnualVolume(npdName);
+    });
 
     get("/", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
