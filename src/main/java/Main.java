@@ -23,11 +23,11 @@ public class Main {
     get("/hello", (req, res) -> "Hello World");
     
     get("/IdealPrice", (req, res) -> {
-    	//String npdName = req.params("npd");
+    	String npdName = req.params("npd");
     	
     	IdealPrice idealPrice1 = new IdealPrice();
-    	//return idealPrice1.getAnnualVolume(npdName);
-    	return idealPrice1.getAnnualVolume("NPD-00500");
+    	return idealPrice1.getAnnualVolume(npdName);
+    	//return idealPrice1.getAnnualVolume("NPD-00500");
     	});
 
     get("/", (request, response) -> {
